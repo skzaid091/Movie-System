@@ -2,6 +2,7 @@ import pickle
 import streamlit as st
 import pandas as pd
 import requests
+from os import path
 
 st.set_page_config(layout='wide')
 st.title('Movie Recommender System')
@@ -30,7 +31,12 @@ movies_list = pickle.load(open('movies.pkl', 'rb'))
 movies_list = movies_list[['id', 'title']]
 movies = pd.DataFrame(movies_list)
 
-similarity_list = pickle.load(open('similarity.pkl', 'rb'))
+if path.exists('models/similarity.pkl'):
+    similarity_list = pickle.load(open('models/similarity.pkl', 'rb'))
+else:
+    with zipfile.ZipFile("similar.zip","r") as zip_ref:
+        zip_ref.extractall("models")
+    similarity_list = pickle.load(open('models/similarity.pkl', 'rb'))
 
 selected_movie_name = st.selectbox('Enter Movie Name', movies_list['title'])
 
