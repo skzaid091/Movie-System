@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import requests
 from os import path
+import zipfile
 
 st.set_page_config(layout='wide')
 st.title('Movie Recommender System')
