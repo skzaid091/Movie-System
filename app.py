@@ -27,7 +27,7 @@ def recommend(movie_name, df, sl):
         recommended_movie_posters.append(fetch_api(df.iloc[i[0]].id))
     return top5_movies, recommended_movie_posters
 
-hindi_movies = pickle.load(open('hindi_movies.pkl', 'rb'))
+hindi_movies = pd.read_pickle('hindi_movies.pkl')
 hindi_movies = hindi_movies[['movie_id', 'title']]
 movies_hindi = pd.DataFrame(hindi_movies)
 movies_hindi.rename(columns={'movie_id': 'id'}, inplace=True)
