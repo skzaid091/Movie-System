@@ -21,7 +21,7 @@ def recommend(movie_name, df, sl):
     recommended_movie_posters = []
     movie_index = df[df['title'] == movie_name].index[0]
     distances = sl[movie_index]
-    movie_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[0:5]
+    movie_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[0:10]
     for i in movie_list:
         top5_movies.append(df.iloc[i[0]].title)
         recommended_movie_posters.append(fetch_api(df.iloc[i[0]].id))
