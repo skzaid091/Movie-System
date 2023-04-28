@@ -27,15 +27,14 @@ def recommend(movie_name, df, sl):
         recommended_movie_posters.append(fetch_api(df.iloc[i[0]].id))
     return top5_movies, recommended_movie_posters
 
-
-movies_list = pickle.load(open('movies.pkl', 'rb'))
-movies_list = movies_list[['id', 'title']]
-movies = pd.DataFrame(movies_list)
-
 hindi_movies = pickle.load(open('hindi_movies.pkl', 'rb'))
 hindi_movies = hindi_movies[['movie_id', 'title']]
 movies_hindi = pd.DataFrame(hindi_movies)
 movies_hindi.rename(columns={'movie_id': 'id'}, inplace=True)
+
+movies_list = pickle.load(open('movies.pkl', 'rb'))
+movies_list = movies_list[['id', 'title']]
+movies = pd.DataFrame(movies_list)
 
 if path.exists('models/similarity.pkl'):
     similarity_list = pickle.load(open('models/similarity.pkl', 'rb'))
