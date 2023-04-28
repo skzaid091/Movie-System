@@ -44,7 +44,7 @@ else:
         zip_ref.extractall("models")
     similarity_list = pickle.load(open('models/similarity.pkl', 'rb'))
     
- if path.exists('models/hindi_similarity.pkl'):
+if path.exists('models/hindi_similarity.pkl'):
     hindi_similarity_list = pickle.load(open('models/hindi_similarity.pkl', 'rb'))
 else:
     with zipfile.ZipFile("hindi_similarity.zip","r") as zip_ref:
